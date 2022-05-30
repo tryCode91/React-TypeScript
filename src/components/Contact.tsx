@@ -1,6 +1,6 @@
 import React from 'react';
 import {useForm} from 'react-hook-form'
-
+import '../App.css';
 type Profile = {
 
     firstName : string;
@@ -9,7 +9,7 @@ type Profile = {
 
     email : string;
 
-
+    message: string;
 }
 
 const Contact: React.FC = () => {
@@ -26,72 +26,84 @@ const Contact: React.FC = () => {
 
 
     return (
-        <div className="container text-center mt-5">
-            <div className="row">
-                <div className="col">
-                    <p className='h3 fw-bold'>This is Contact page</p>
-                </div>
-            </div>
-    
-                    
-                    
-                    <div className="row mt-3 text-center">
-                        <div className="col-sm-5">
+        <div className='contactForm'>
+   
+                    <p className='h3 mb-4 mt-4 fw-bold'>This is a Contact page</p>
+          
 
-                     
-                    <form onSubmit={onSubmit}>
+                    <form onSubmit={onSubmit} className="mt-5 form shadow">
 
 
-                        <div className="form-group">
-                        
-                            <label htmlFor='firstName'>FirstName: </label>
+                            <div className='flexChildren'>  
+                                        
+                                
 
-                            <input className='form-control' {...register('firstName', {required : true})} type='text' name='firstName' id='firstName' />
-                            {
+
+                                <input className='AddToList-input' {...register('firstName', {required : true})} placeholder="Firstname" type='text' name='firstName' id='firstName' />
+                                    
+                                {
+                                
                                 errors.firstName && <div className="text-danger ">Enter your firstname</div>
-                            }
-                        </div>
+                                    
+                                }
+
                         
-                        <div className="form-group">
+                            </div>
                         
-                            <label htmlFor='lastName'>last Name: </label>
+                            <div className="flexChildren">
                         
-                            <input className='form-control' {...register('lastName', {required : true})} type='text' name='lastName' id='lastName' />
+                        
+                       
+
+                                <input className='AddToList-input' {...register('lastName', {required : true})} placeholder="Lastname" type='text' name='lastName' id='lastName' />
+                                
+                                {
+                                    
+                                    errors.lastName && <div className='text-danger'>Enter your lastname</div>
+                                    
+                                }
+
+                       
+                        
+                            </div>
+
+                            <div className="flexChildren">
+                        
+                        
                             
+                            <input className='AddToList-input' {...register('email', {required : true})} placeholder="Email" type='text' name='email' id='email' />
+
                             {
                                 
-                                errors.lastName && <div className='text-danger'>Enter your lastname</div>
-
-                            }
-
-                        </div>
-                        
-                        <div className="form-group">
-                        
-                            <label htmlFor='email'>Email: </label>
-                            
-                            <input className='form-control' {...register('email', {required : true})} type='text' name='email' id='email' />
-
-                            {
-
                                 errors.email && <div className='text-danger fwt-italic'>Enter your email</div>
-
+                                
                             }
                         
-                        </div>
+                     
+                            </div>
 
+                          
+                        
+                            <div className="flexChildren">
+                                <textarea
+                                    id="message"
+                                    placeholder='Message'
+                                    {...register('message', {required : false})}
+                                    className="AddToList-input"
+                                />
+                            </div>
+                  
+                 
+                     
 
                         <button type='submit' className='btn btn-primary'>Submit</button>
                     
                     </form>
                 
+
                 
-                
-                
-                
-                </div>
-            </div>
-        </div>
+                    </div>
+         
     )
 }
 
