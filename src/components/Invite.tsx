@@ -28,7 +28,7 @@ const Invite: React.FC = () => {
       name: "Petrus Dughem",
       url: "",
       age: 31,
-      note: "Petrus Dughem Lär Sig TypeScript För Att Han Är BÄST!",
+      note: "Petrus Dughem Lär Sig TypeScript!",
     
     }
 

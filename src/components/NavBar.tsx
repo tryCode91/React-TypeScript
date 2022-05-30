@@ -15,22 +15,16 @@ const NavBar: React.FC = () => {
                     <div className="collapse.navbar-collapse ">
                         <ul className='navbar-nav'>
                             <li className='nav-item'>
-                                <Link to={'/Home'} className='nav-link'>Home</Link>
+                                <Link to={'/'} className='nav-link'>Home</Link>
                             </li>
                             <li className='nav-item'>
                                 <Link to={'/Invite'} className='nav-link'>Party</Link>
                             </li>
                             <li className='nav-item'>
                                 <Link to={'/About'} className='nav-link'>About</Link>
-                            </li>  
+                            </li>   
                             <li className='nav-item'>
-                                <Link to={'/'} className='nav-link'>Stuff</Link>
-                            </li>  
-                            <li className='nav-item'>
-                                <Link to={'/'} className='nav-link'>Email</Link>
-                            </li>  
-                            <li className='nav-item'>
-                                <Link to={'/'} className='nav-link'>Contact</Link>
+                                <Link to={'/Contact'} className='nav-link'>Contact</Link>
                             </li>    
                         </ul>
                     </div>

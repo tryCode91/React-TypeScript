@@ -9,6 +9,7 @@ import NavBar from './components/NavBar';
 import {Routes, Route, Navigate} from 'react-router-dom'
 import About from './components/About';
 import Home from './components/Home';
+import Contact from './components/Contact';
 
 
 function App() {
@@ -28,25 +29,18 @@ function App() {
     <React.Fragment>
         
             <NavBar />
-           
-
+      
+            
             <Routes>
              
              
-              <Route path={'/'} element={'/'} />
-
-
-              <Route path={'/Home'} element={<Home />} />
+              <Route path={'/'} element={ <Home /> }  />
               
               <Route path={'/Invite'} element={<Invite />} />
-
-
-
-
         
               <Route path={'/About'} element={<About />} />
 
-
+              <Route path={'/Contact'} element={ <Contact /> } /> 
 
             </Routes>    
        
