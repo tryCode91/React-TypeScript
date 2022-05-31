@@ -1,110 +1,109 @@
-import React from 'react';
-import {useForm} from 'react-hook-form'
-import '../App.css';
+import React from "react";
+import { useForm } from "react-hook-form";
+
 type Profile = {
+  firstName: string;
 
-    firstName : string;
+  lastName: string;
 
-    lastName : string;
+  email: string;
 
-    email : string;
-
-    message: string;
-}
+  message: string;
+};
 
 const Contact: React.FC = () => {
+  //hämtar register från useForm. Sätter register som där alla värden från input ska lagras i.
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<Profile>();
 
-    //hämtar register från useForm. Sätter register som där alla värden från input ska lagras i.
-    const {register, handleSubmit, formState: {errors}} = useForm<Profile>();
+  //skapar en submit funktion till button.
+  const onSubmit = handleSubmit((data) => {
+    alert(JSON.stringify(data));
+  });
 
-    //skapar en submit funktion till button.
-    const onSubmit = handleSubmit(  (data) => {
+  return (
+    <div className="container text-center mt-5">
+      <div className="row">
+        <div className="col">
+          <p className="h3 fw-bold">This is Contact page</p>
 
-        alert(JSON.stringify(data))
+          <div className="row mt-3 ">
+            <div className="col">
+              <form onSubmit={onSubmit}>
+                <div className="form-group ">
+                  {/* <label htmlFor='firstName'>FirstName: </label> */}
 
-    })
+                  <input
+                    placeholder="FirstName"
+                    className="form-control-sm"
+                    {...register("firstName", { required: true })}
+                    type="text"
+                    name="firstName"
+                    id="firstName"
+                  />
+                  {errors.firstName && (
+                    <div className="text-danger ">Enter your firstname</div>
+                  )}
+                </div>
 
+                <div className="form-group mt-2">
+                  {/* <label htmlFor='lastName'>last Name: </label> */}
 
-    return (
-        <div className='contactForm'>
-   
-                    <p className='h3 mb-4 mt-4 fw-bold'>This is a Contact page</p>
-          
+                  <input
+                    placeholder="LastName"
+                    className="form-control-sm"
+                    {...register("lastName", { required: true })}
+                    type="text"
+                    name="lastName"
+                    id="lastName"
+                  />
 
-                    <form onSubmit={onSubmit} className="mt-5 form shadow">
+                  {errors.lastName && (
+                    <div className="text-danger">Enter your lastname</div>
+                  )}
+                </div>
 
+                <div className="form-group mt-2">
+                  {/* <label htmlFor='email'>Email: </label> */}
 
-                            <div className='flexChildren'>  
-                                        
-                                
+                  <input
+                    placeholder="Email"
+                    className="form-control-sm"
+                    {...register("email", { required: true })}
+                    type="text"
+                    name="email"
+                    id="email"
+                  />
 
-
-                                <input className='AddToList-input' {...register('firstName', {required : true})} placeholder="Firstname" type='text' name='firstName' id='firstName' />
-                                    
-                                {
-                                
-                                errors.firstName && <div className="text-danger ">Enter your firstname</div>
-                                    
-                                }
-
-                        
-                            </div>
-                        
-                            <div className="flexChildren">
-                        
-                        
-                       
-
-                                <input className='AddToList-input' {...register('lastName', {required : true})} placeholder="Lastname" type='text' name='lastName' id='lastName' />
-                                
-                                {
-                                    
-                                    errors.lastName && <div className='text-danger'>Enter your lastname</div>
-                                    
-                                }
-
-                       
-                        
-                            </div>
-
-                            <div className="flexChildren">
-                        
-                        
-                            
-                            <input className='AddToList-input' {...register('email', {required : true})} placeholder="Email" type='text' name='email' id='email' />
-
-                            {
-                                
-                                errors.email && <div className='text-danger fwt-italic'>Enter your email</div>
-                                
-                            }
-                        
-                     
-                            </div>
-
-                          
-                        
-                            <div className="flexChildren">
-                                <textarea
-                                    id="message"
-                                    placeholder='Message'
-                                    {...register('message', {required : false})}
-                                    className="AddToList-input"
-                                />
-                            </div>
-                  
-                 
-                     
-
-                        <button type='submit' className='btn btn-primary'>Submit</button>
-                    
-                    </form>
-                
-
-                
+                  {errors.email && (
+                    <div className="text-danger fwt-italic">
+                      Enter your email
                     </div>
-         
-    )
-}
+                  )}
+                </div>
+
+                <div className="form-group mt-2">
+                  <textarea
+                    placeholder="Message"
+                    className="message"
+                    {...register("message", { required: true })}
+                    id="message"
+                  ></textarea>
+                </div>
+
+                <button type="submit" className="btn btn-primary mt-2">
+                  Send
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
 
 export default Contact;
